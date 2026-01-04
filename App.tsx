@@ -10,13 +10,15 @@ const AnalysisCard: React.FC<{ analysis: SoulCodeResult['analysis'][0] }> = ({ a
 
   return (
     <div className="bg-white/70 backdrop-blur-md rounded-[2.5rem] p-8 border border-white shadow-[0_20px_50px_rgba(142,148,242,0.15)] transition-all hover:shadow-[0_25px_60px_rgba(142,148,242,0.2)] group">
-      <div className="flex items-center gap-4 mb-8">
-        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#8e94f2] to-[#f4b0d7] flex items-center justify-center text-white font-bold shadow-md flex-shrink-0">
+      <div className="flex items-start gap-4 mb-8">
+        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#8e94f2] to-[#f4b0d7] flex items-center justify-center text-white font-bold shadow-md flex-shrink-0 mt-1">
           {analysis.level}
         </div>
-        <div>
-          <h4 className="text-lg font-bold text-[#5a5d8f]">{analysis.title}</h4>
-          <p className="text-[11px] text-[#a5a9d6] font-light leading-snug max-w-[280px] md:max-w-md">{analysis.subtitle}</p>
+        <div className="flex flex-col gap-1">
+          <h4 className="text-xl font-bold text-[#5a5d8f] tracking-wide">{analysis.title}</h4>
+          <p className="text-[14px] sm:text-[13px] text-[#8a8eb5] font-normal leading-relaxed max-w-[280px] md:max-w-md">
+            {analysis.subtitle}
+          </p>
         </div>
       </div>
       <div className="flex items-center gap-4 sm:gap-5">
