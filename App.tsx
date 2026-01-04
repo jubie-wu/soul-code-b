@@ -10,8 +10,8 @@ const AnalysisCard: React.FC<{ analysis: SoulCodeResult['analysis'][0] }> = ({ a
 
   return (
     <div className="bg-white/70 backdrop-blur-md rounded-[2.5rem] p-8 border border-white shadow-[0_20px_50px_rgba(142,148,242,0.15)] transition-all hover:shadow-[0_25px_60px_rgba(142,148,242,0.2)] group">
-      <div className="flex items-center gap-4 mb-6">
-        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#8e94f2] to-[#f4b0d7] flex items-center justify-center text-white font-bold shadow-md">
+      <div className="flex items-center gap-4 mb-8">
+        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#8e94f2] to-[#f4b0d7] flex items-center justify-center text-white font-bold shadow-md flex-shrink-0">
           {analysis.level}
         </div>
         <div>
@@ -19,21 +19,23 @@ const AnalysisCard: React.FC<{ analysis: SoulCodeResult['analysis'][0] }> = ({ a
           <p className="text-[11px] text-[#a5a9d6] font-light leading-snug max-w-[280px] md:max-w-md">{analysis.subtitle}</p>
         </div>
       </div>
-      <div className="flex items-center gap-5">
+      <div className="flex items-center gap-4 sm:gap-5">
         <div 
-          className="w-14 h-14 p-3 rounded-2xl transition-all duration-300"
+          className="w-16 h-16 sm:w-14 sm:h-14 p-3.5 sm:p-3 rounded-2xl transition-all duration-300 flex-shrink-0 flex items-center justify-center"
           style={{ 
             backgroundColor: `${shapeInfo.color}15`, 
             color: shapeInfo.color 
           }}
         >
-          {shapeInfo.svg}
+          <div className="w-full h-full">
+            {shapeInfo.svg}
+          </div>
         </div>
-        <div className="flex flex-col">
-          <span className="text-[9px] text-[#b0b4d4] font-bold uppercase tracking-widest">
+        <div className="flex flex-col flex-1 min-w-0">
+          <span className="text-[10px] sm:text-[9px] text-[#b0b4d4] font-bold uppercase tracking-widest mb-1">
             {shapeInfo.icon} {shapeInfo.label}
           </span>
-          <span className="text-xl font-bold text-[#5a5d8f] leading-tight">
+          <span className="text-xl sm:text-2xl font-bold text-[#5a5d8f] leading-tight break-words">
             <span className="text-[#8e94f2]">{mainTitle}</span>：{subTitle}
           </span>
         </div>
@@ -107,9 +109,9 @@ const App: React.FC = () => {
         {/* 優化後的 CTA Section */}
         <div className="relative mb-20">
           <div className="absolute inset-0 bg-gradient-to-br from-[#8e94f2]/5 to-[#f4b0d7]/5 rounded-[3.5rem] -rotate-1 scale-105 -z-10"></div>
-          <div className="bg-white/50 backdrop-blur-md rounded-[3.5rem] p-10 md:p-16 border border-white/80 shadow-2xl text-center relative overflow-hidden">
+          <div className="bg-white/50 backdrop-blur-md rounded-[3.5rem] p-10 md:p-16 border border-white/80 shadow-2xl flex flex-col items-center text-center relative overflow-hidden">
             <span className="text-[12px] font-bold text-[#8e94f2] tracking-[0.4em] uppercase block mb-4">Deep Soul Connection</span>
-            <h3 className="text-3xl md:text-4xl font-bold text-[#5a5d8f] mb-8 font-serif-code">
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#5a5d8f] mb-10 font-serif-code whitespace-nowrap inline-block">
               開啟與內在的深度對話
             </h3>
             
