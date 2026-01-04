@@ -109,11 +109,16 @@ const SoulStarChart: React.FC<{ permutation: ShapeType[] }> = ({ permutation }) 
 
       <div className="mt-14 text-center relative z-10">
         <div className="flex flex-col items-center gap-5">
-          <div className="max-w-[300px] space-y-3">
+          <div className="max-w-[340px] space-y-3">
             <p className="text-white text-[15px] font-bold leading-relaxed tracking-widest uppercase">✦ 靈魂能量映射 ✦</p>
             <p className="text-white/80 text-[14px] leading-relaxed italic font-medium text-center">
-              「這份星圖是你靈魂此刻的共振頻率，<br/>看見隱藏在潛意識中的光芒。」
+              這份星圖是你內在與圖像的共鳴，<br/>看見隱藏在潛意識中的光芒，<br/>突出的端點揭示了你2026年核心的天賦與動能。
             </p>
+            <div className="pt-4 border-t border-white/10">
+              <p className="text-[#f4b0d7] text-[13px] font-bold tracking-[0.2em]">
+                截圖分享 啟動你的2026能量場
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -219,7 +224,7 @@ const App: React.FC = () => {
         }
       }
 
-      // 2. 回退：直接下載 (Android 與電腦版最有效)
+      // 2. 回回：直接下載 (Android 與電腦版最有效)
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
@@ -294,7 +299,7 @@ const App: React.FC = () => {
 
           <SoulStarChart permutation={currentResult.permutation} />
 
-          {/* 重要導流區塊 - 恢復 */}
+          {/* 重要導流區塊 */}
           <div className="hide-on-capture relative mt-24 mb-20">
             <div className="absolute inset-0 bg-gradient-to-br from-[#8e94f2]/5 to-[#f4b0d7]/5 rounded-[3.5rem] -rotate-1 scale-105 -z-10"></div>
             <div className="bg-white/50 backdrop-blur-md rounded-[3.5rem] p-10 md:p-16 border border-white/80 shadow-2xl flex flex-col items-center text-center relative overflow-hidden">
