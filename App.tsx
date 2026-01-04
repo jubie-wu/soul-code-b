@@ -294,7 +294,30 @@ const App: React.FC = () => {
 
           <SoulStarChart permutation={currentResult.permutation} />
 
-          <footer className="text-center mt-20 pb-12">
+          {/* 重要導流區塊 - 恢復 */}
+          <div className="hide-on-capture relative mt-24 mb-20">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#8e94f2]/5 to-[#f4b0d7]/5 rounded-[3.5rem] -rotate-1 scale-105 -z-10"></div>
+            <div className="bg-white/50 backdrop-blur-md rounded-[3.5rem] p-10 md:p-16 border border-white/80 shadow-2xl flex flex-col items-center text-center relative overflow-hidden">
+              <span className="text-[12px] font-bold text-[#8e94f2] tracking-[0.4em] uppercase block mb-4">Deep Soul Connection</span>
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#5a5d8f] mb-10 font-serif-code whitespace-nowrap inline-block">
+                開啟與內在的深度對話
+              </h3>
+              <div className="max-w-2xl mx-auto space-y-6 mb-12 text-left sm:text-center">
+                <p className="text-lg text-[#5a5d8f]/90 leading-relaxed font-medium">
+                  在居筆內在繪畫工作室，我們相信每一個筆觸都是潛意識的低語。透過色彩的溫度與構圖的節奏，我們將陪你一同看見那些隱藏在日常之下的真實。
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
+                <a href="https://jubiewu.com/analysis/" target="_blank" rel="noopener noreferrer" className="group px-10 py-4 rounded-full border-2 border-[#8e94f2]/30 text-[#8e94f2] font-bold hover:bg-[#8e94f2]/5 transition-all duration-300">瞭解內在繪畫解讀</a>
+                <a href="https://lin.ee/veQopyH" target="_blank" rel="noopener noreferrer" className="relative group overflow-hidden px-12 py-5 rounded-full bg-gradient-to-r from-[#8e94f2] via-[#a2a8f5] to-[#f4b0d7] text-white font-bold text-xl shadow-[0_15px_35px_rgba(142,148,242,0.3)] hover:shadow-[0_20px_45px_rgba(142,148,242,0.4)] hover:-translate-y-1 transition-all duration-300">
+                  <span className="relative z-10 flex items-center gap-2">立即預約一對一解讀</span>
+                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <footer className="text-center pb-12">
              <p className="text-[#b0b4d4] text-sm italic mb-8">「繪畫是最真實的內在映射，筆觸間流淌著你未曾察覺的靈魂風景。」</p>
              <p className="text-[10px] text-[#b0b4d4] tracking-widest uppercase text-center w-full">© 2026 Jubie 居筆內在繪畫解讀工作室</p>
           </footer>
