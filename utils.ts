@@ -73,20 +73,3 @@ export const getAnalysisResultByCode = (code: string): SoulCodeResult | null => 
     affirmation 
   };
 };
-
-export const generateExcelData = () => {
-  const allPerms = getAllPermutations();
-  return allPerms.map((p, idx) => {
-    const code = (idx + 1).toString().padStart(3, '0');
-    const res = getAnalysisResultByCode(code)!;
-    const row: any = {
-      '靈魂代碼': res.code,
-      '排序組合': p.map(s => SHAPES.find(sh => sh.type === s)?.label).join(' > '),
-      '2026 融合版專屬祝福': res.blessing, // 匯出包含換行與融合內容的完整祝福
-    };
-    res.analysis.forEach((a, i) => {
-      row[`第${i + 1}順位 (${a.title.split('：')[0]})`] = a.description;
-    });
-    return row;
-  });
-};
