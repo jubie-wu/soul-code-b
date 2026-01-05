@@ -10,9 +10,9 @@ const SoulStarChart: React.FC<{ permutation: ShapeType[] }> = ({ permutation }) 
   const dimensions = [
     { type: ShapeType.Circle, label: '勇氣', icon: '●' },
     { type: ShapeType.Triangle, label: '直覺', icon: '▲' },
-    { type: ShapeType.Square, label: '執行力', icon: '■' },
-    { type: ShapeType.Spiral, label: '適應力', icon: '◎' },
-    { type: ShapeType.Cross, label: '社交力', icon: '✚' }
+    { type: ShapeType.Square, label: '執行', icon: '■' },
+    { type: ShapeType.Spiral, label: '創意', icon: '◎' },
+    { type: ShapeType.Cross, label: '社交', icon: '✚' }
   ];
 
   const centerX = 50;
@@ -153,7 +153,7 @@ const AnalysisCard: React.FC<{ analysis: SoulCodeResult['analysis'][0] }> = ({ a
         <div className="flex flex-col flex-1 min-w-0">
           <span className="text-[9px] text-[#b0b4d4] font-bold uppercase tracking-widest mb-1">{shapeInfo.icon} {shapeInfo.label}</span>
           <span className="text-xl sm:text-2xl font-bold text-[#5a5d8f] leading-tight break-words">
-            <span className="text-[#8e94f2]">{mainTitle}</span>：{subTitle}
+            <span className="text-[#8e94f2]">{mainTitle}：</span>{subTitle}
           </span>
         </div>
       </div>
@@ -197,12 +197,12 @@ const App: React.FC = () => {
     try {
       const canvas = await html2canvas(captureRef.current, {
         useCORS: true,
-        scale: 3, 
+        scale: 2, // 調整為 2 倍以平衡畫質與效能
         backgroundColor: '#f8f9ff',
-        scrollX: 0,
-        scrollY: -window.scrollY,
+        logging: false,
         onclone: (clonedDoc) => {
-          clonedDoc.body.style.backgroundImage = 'radial-gradient(at 0% 0%, rgba(142, 148, 242, 0.15) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(244, 176, 215, 0.15) 0px, transparent 50%)';
+          const el = clonedDoc.querySelector('.is-capturing') as HTMLElement;
+          if (el) el.style.backgroundColor = '#f8f9ff';
         }
       });
       
@@ -210,33 +210,44 @@ const App: React.FC = () => {
       const blob = await new Promise<Blob | null>(resolve => canvas.toBlob(resolve, 'image/png'));
       if (!blob) throw new Error('生成圖片失敗');
 
-      // 1. 嘗試原生分享 (最推薦 iOS 使用，可選「儲存影像」)
-      if (navigator.share && navigator.canShare) {
-        const file = new File([blob], fileName, { type: 'image/png' });
-        if (navigator.canShare({ files: [file] })) {
-          await navigator.share({
-            files: [file],
-            title: '我的 2026 靈魂圖像代碼',
-            text: `我的靈魂代碼是 ${currentResult?.code}`
-          });
-          setIsCapturing(false);
-          return;
+      // 檢查是否為行動裝置
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+      // 如果是行動裝置且支援分享 API，則嘗試分享
+      if (isMobile && navigator.share && navigator.canShare) {
+        try {
+          const file = new File([blob], fileName, { type: 'image/png' });
+          if (navigator.canShare({ files: [file] })) {
+            await navigator.share({
+              files: [file],
+              title: '我的 2026 靈魂圖像代碼',
+              text: `我的靈魂代碼是 ${currentResult?.code}`
+            });
+            setIsCapturing(false);
+            return;
+          }
+        } catch (shareErr) {
+          console.log('分享取消或不支援:', shareErr);
+          // 繼續執行下載流程
         }
       }
 
-      // 2. 回回：直接下載 (Android 與電腦版最有效)
+      // 電腦版或分享失敗時：執行直接下載
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
       link.download = fileName;
+      // 針對部分瀏覽器需要將 a 標籤加入 DOM 才能觸發
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      URL.revokeObjectURL(url);
+      
+      // 延遲釋放 URL
+      setTimeout(() => URL.revokeObjectURL(url), 100);
       
     } catch (err) {
       console.error('儲存失敗:', err);
-      alert('無法自動儲存。請直接在畫面長按圖片或手動截圖。');
+      alert('無法自動儲存。請直接手動截圖或長按圖片。');
     } finally {
       setIsCapturing(false);
     }

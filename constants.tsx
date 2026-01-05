@@ -30,7 +30,7 @@ export const SHAPES: (ShapeInfo & { svg: React.ReactNode })[] = [
 ];
 
 export const BLESSINGS_2026: Record<ShapeType, string> = {
-  [ShapeType.Circle]: "2026 年是你在孤獨中綻放最耀眼光芒的一年。你的畫布將揭示自由的真正邊界。準備好在色彩中遇見那個最純粹、不需妥協的自己了嗎？",
+  [ShapeType.Circle]: "2026 年是你在獨立中綻放最耀眼光芒的一年。你的畫布將揭示自由的真正邊界。準備好在色彩中遇見那個最純粹、不需妥協的自己了嗎？",
   [ShapeType.Triangle]: "2026 年，你的遠見將化為現實。筆跡會為你勾勒出尚未命名的道路。當你放下理性的佈局，直覺會在畫紙上告訴你什麼未來的秘密？",
   [ShapeType.Square]: "2026 年為你提供了一個穩固的靈魂避風港。內在畫作藏著你追求極致平靜的藍圖。透過色彩的流動，去發現你內心深處最堅實的安全感吧。",
   [ShapeType.Spiral]: "2026 年對你而言是場華麗的蛻變之旅。畫紙上的每一道線條，都是通往未知的冒險。有什麼樣的嶄新自我，正等著被你親手畫進現實？",
@@ -50,7 +50,7 @@ export const ANALYSIS_LEVELS: AnalysisLevel[] = [
     title: '第一順位：核心生命動能',
     subtitle: '這代表你靈魂深處最迫切的渴望，也是驅動你所有行為的潛意識原動力。',
     descriptions: {
-      [ShapeType.Circle]: '獨立自主：追求靈魂的絕對主導權，渴望在獨立中守護自我邊界，不喜歡被外界干淨。',
+      [ShapeType.Circle]: '獨立自主：追求靈魂的絕對主導權，渴望在獨立中守護自我邊界，不喜歡被外界干涉。',
       [ShapeType.Triangle]: '行事有規劃：具備清晰的遠見與佈局，渴望掌握生命發展的羅盤，凡事講求效率與目標。',
       [ShapeType.Square]: '真實誠懇：崇尚極致的真實與坦白，渴望在穩定的秩序中建立深層的內在安全感。',
       [ShapeType.Spiral]: '冒險改變：靈魂深處跳動著冒險因子，渴望透過不斷打破現狀、尋求變化來換取生命成長。',
