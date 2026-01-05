@@ -260,17 +260,14 @@ const App: React.FC = () => {
         <button 
           onClick={handleSaveImage}
           disabled={isCapturing}
-          className="hide-on-capture fixed bottom-8 right-6 z-[100] w-16 h-16 rounded-full bg-gradient-to-br from-[#8e94f2] to-[#f4b0d7] shadow-[0_15px_40px_rgba(142,148,242,0.5)] flex flex-col items-center justify-center text-white active:scale-90 transition-all"
+          className="hide-on-capture fixed bottom-8 right-6 z-[100] w-16 h-16 rounded-full bg-gradient-to-br from-[#8e94f2] to-[#f4b0d7] shadow-[0_15px_40px_rgba(142,148,242,0.5)] flex items-center justify-center text-white active:scale-90 transition-all"
         >
           {isCapturing ? (
             <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
           ) : (
-            <>
-              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-              </svg>
-              <span className="text-[8px] font-bold mt-0.5">儲存/分享</span>
-            </>
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
           )}
         </button>
 
